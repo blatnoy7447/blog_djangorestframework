@@ -6,7 +6,8 @@ class CustomUser(AbstractUser):
     address = models.CharField(max_length=255, null=True, blank=True)
 
 
-class Article(models.Model):
+class Post(models.Model):
+    """Посты"""
     title = models.CharField(max_length=155)
     summary = models.CharField(max_length=255)
     body = models.TextField()
@@ -17,12 +18,13 @@ class Article(models.Model):
         return self.title
 
 
-class Comment(models.Model):
-    article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    comment = models.CharField(max_length=150)
+class Review(models.Model):
+    """Отзывы"""
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='reviews')
+    text = models.TextField("Сообщение", max_length=5000)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     parent = models.ForeignKey('self',
-                               default=None,
+                               verbose_name="Родитель",
                                on_delete=models.CASCADE,
                                related_name='children',
                                null=True,
@@ -30,4 +32,8 @@ class Comment(models.Model):
                                )
 
     def __str__(self):
-        return self.comment
+        return self.text
+
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"

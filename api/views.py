@@ -1,31 +1,28 @@
 from rest_framework.permissions import IsAuthenticated
 
-from .serializers import ArticleSerializer, CommentSerializer
+from .serializers import PostSerializer, PostDetailSerializer, ReviewCreateSerializer
 from rest_framework import generics
-from articles.models import Article, Comment
+from articles.models import Post
 
 
-class ArticleListView(generics.ListAPIView):
-    serializer_class = ArticleSerializer
+class PostListView(generics.ListAPIView):
+    serializer_class = PostSerializer
 
     def get_queryset(self):
-        articles = Article.objects.all()
+        articles = Post.objects.all()
         return articles
 
 
-class ArticleDetailView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = ArticleSerializer
+class PostDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = PostDetailSerializer
     # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        articles = Article.objects.all()
+        articles = Post.objects.all()
         return articles
 
 
-class CommentView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = CommentSerializer
-    permission_classes = [IsAuthenticated]
-
-    def get_queryset(self):
-        comments = Comment.objects.all()
-        return comments
+class ReviewCreateView(generics.CreateAPIView):
+    """Добавление отзыва к посту"""
+    serializer_class = ReviewCreateSerializer
+    # permission_classes = [IsAuthenticated]

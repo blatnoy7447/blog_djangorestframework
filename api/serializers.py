@@ -1,23 +1,35 @@
 from rest_framework import serializers
-from articles.models import Article, Comment
+from articles.models import Post, Review
 
 
-class ArticleSerializer(serializers.ModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Article
+        model = Post
         fields = ('title', 'summary')
 
 
-class ArticleDetailSerializer(serializers.ModelSerializer):
-
+class ReviewCreateSerializer(serializers.ModelSerializer):
+    """Добавление отзыва"""
     class Meta:
-        model = Article
+        model = Review
         fields = "__all__"
 
 
-class CommentSerializer(serializers.ModelSerializer):
+class ReviewSerializer(serializers.ModelSerializer):
+    """Вывод отзыва"""
+    class Meta:
+        model = Review
+        fields = ('text', 'parent')
+
+
+class PostDetailSerializer(serializers.ModelSerializer):
+    """Полный пост"""
+    reviews = ReviewSerializer(many=True)
 
     class Meta:
-        model = Comment
-        fields = ('comment', 'children')
+        model = Post
+        fields = "__all__"
+
+
+

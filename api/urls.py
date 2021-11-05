@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import ArticleListView, CommentView, ArticleDetailView
+from .views import PostListView, PostDetailView, ReviewCreateView
 
 
 urlpatterns = [
-    path('articles/', ArticleListView.as_view()),
-    path('article-detail/<int:pk>/', ArticleDetailView.as_view()),
-    path('comments/<int:pk>/', CommentView.as_view())
+    path('post/', PostListView.as_view()),
+    path('post-detail/<int:pk>/', PostDetailView.as_view()),
+    path('reviews/<int:pk>/', ReviewCreateView.as_view())
 ]
