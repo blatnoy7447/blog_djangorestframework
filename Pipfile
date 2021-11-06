@@ -6,6 +6,11 @@ name = "pypi"
 [packages]
 django = "~=3.2.0"
 djangorestframework = "*"
+djoser = "==2.1.0"
+djangorestframework-jsonapi = "==4.2.1"
+djangorestframework-jwt = "==1.11.0"
+pyjwt = "*"
+drf-yasg = "*"
 
 [dev-packages]
 

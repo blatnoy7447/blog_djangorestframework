@@ -15,7 +15,7 @@ class PostListView(generics.ListAPIView):
 
 class PostDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostDetailSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         articles = Post.objects.all()
@@ -25,4 +25,4 @@ class PostDetailView(generics.RetrieveUpdateDestroyAPIView):
 class ReviewCreateView(generics.CreateAPIView):
     """Добавление отзыва к посту"""
     serializer_class = ReviewCreateSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
