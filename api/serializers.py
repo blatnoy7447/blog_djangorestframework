@@ -16,13 +16,6 @@ class RecursiveSerializer(serializers.Serializer):
         return serializer.data
 
 
-class PostSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Post
-        fields = ('title', 'summary')
-
-
 class ReviewCreateSerializer(serializers.ModelSerializer):
     """Добавление отзыва"""
     class Meta:
@@ -38,6 +31,14 @@ class ReviewSerializer(serializers.ModelSerializer):
         list_serializer_class = FilterReviewListSerializer
         model = Review
         fields = ('text', 'children')
+
+
+class PostSerializer(serializers.ModelSerializer):
+    reviews = ReviewSerializer(many=True)
+
+    class Meta:
+        model = Post
+        fields = "__all__"
 
 
 class PostDetailSerializer(serializers.ModelSerializer):
