@@ -11,6 +11,8 @@ djangorestframework-jsonapi = "==4.2.1"
 djangorestframework-jwt = "==1.11.0"
 pyjwt = "*"
 drf-yasg = "*"
+environs = {version = "==8.0.0", extras = ["django"]}
+psycopg2-binary = "*"
 
 [dev-packages]
 

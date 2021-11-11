@@ -17,6 +17,6 @@ class ReviewAdmin(admin.ModelAdmin):
 
 @admin.register(CustomUser)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ("id", "username", "is_staff")
+    list_display = ("id", "username", "email", "is_staff")
     list_display_links = ("username",)
 
