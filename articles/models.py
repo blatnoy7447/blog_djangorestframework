@@ -22,7 +22,7 @@ class Review(models.Model):
     """Отзывы"""
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='reviews')
     text = models.TextField("Сообщение", max_length=5000)
-    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True)
     created_date = models.DateTimeField("Дата добавления", auto_now_add=True)
     update_date = models.DateTimeField("Изменен", auto_now=True)
     parent = models.ForeignKey('self',
