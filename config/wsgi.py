@@ -2,7 +2,7 @@ import os
 import sys
 
 # project home directory to the sys.path
-project_home = '/home/blatnoy/blog_drf'
+project_home = '/home/blatnoy/blog_djangorestframework'
 if project_home not in sys.path:
     sys.path.insert(0, project_home)
 
