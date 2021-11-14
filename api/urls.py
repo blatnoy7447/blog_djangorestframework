@@ -1,18 +1,18 @@
 from django.urls import path
-from .views import ReviewCreateView, PostViewSet
+from .views import ReviewCreateViewSet, PostViewSet, PostDetailViewSet
 
 
 post_list = PostViewSet.as_view({
     'get': 'list',
 })
-post_detail = PostViewSet.as_view({
+post_detail = PostDetailViewSet.as_view({
     'get': 'retrieve',
-    'post': 'create',
-    'put': 'update',
-    'patch': 'partial_update',
-    'delete': 'destroy'
+    # 'post': 'create',
+    # 'put': 'update',
+    # 'patch': 'partial_update',
+    # 'delete': 'destroy'
 })
-review_detail = ReviewCreateView.as_view({
+review_detail = ReviewCreateViewSet.as_view({
     'get': 'retrieve',
     'post': 'create',
     'put': 'update',

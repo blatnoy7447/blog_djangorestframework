@@ -34,11 +34,10 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    reviews = ReviewSerializer(many=True)
 
     class Meta:
         model = Post
-        fields = "__all__"
+        fields = ("title", "summary")
 
 
 class PostDetailSerializer(serializers.ModelSerializer):

@@ -10,6 +10,7 @@ class Post(models.Model):
     """Посты"""
     title = models.CharField(max_length=155)
     summary = models.CharField(max_length=255)
+    img = models.ImageField(upload_to='images/', null=True, blank=True)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
