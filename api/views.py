@@ -1,9 +1,6 @@
-from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly, AllowAny
-from rest_framework.response import Response
-
-from .serializers import PostSerializer, PostDetailSerializer, ReviewCreateSerializer
-from rest_framework import generics, viewsets, status
+from api.serializers import PostSerializer, PostDetailSerializer, ReviewCreateSerializer
+from rest_framework import viewsets
 from articles.models import Post, Review
 
 

@@ -14,6 +14,7 @@ drf-yasg = "*"
 environs = {version = "==8.0.0", extras = ["django"]}
 psycopg2-binary = "*"
 pillow = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

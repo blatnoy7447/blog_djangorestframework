@@ -12,7 +12,7 @@ post_detail = PostDetailViewSet.as_view({
     # 'patch': 'partial_update',
     # 'delete': 'destroy'
 })
-review_detail = ReviewCreateViewSet.as_view({
+review_create = ReviewCreateViewSet.as_view({
     'get': 'retrieve',
     'post': 'create',
     'put': 'update',
@@ -21,5 +21,5 @@ review_detail = ReviewCreateViewSet.as_view({
 urlpatterns = [
     path('post/', post_list, name='post-list'),
     path('post/<int:pk>/', post_detail, name='post-detail'),
-    path('reviews/<int:pk>/', review_detail, name='review-detail')
+    path('reviews/', review_create, name='review-create')
 ]

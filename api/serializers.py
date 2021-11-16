@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from articles.models import Post, Review
+from articles.models import *
 
 
 class FilterReviewListSerializer(serializers.ListSerializer):
@@ -26,18 +26,19 @@ class ReviewCreateSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     """Вывод отзыва"""
     children = RecursiveSerializer(many=True)
+    author = serializers.StringRelatedField(many=False)
 
     class Meta:
         list_serializer_class = FilterReviewListSerializer
         model = Review
-        fields = ('text', 'children')
+        fields = ('text', 'children', 'author')
 
 
 class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ("title", "summary")
+        fields = ("id", "title", "summary", "img")
 
 
 class PostDetailSerializer(serializers.ModelSerializer):
